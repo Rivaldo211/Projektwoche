@@ -1,0 +1,76 @@
+
+### Aufgabe 1 — Feld 1D (zaehlen)
+```java
+public static int zaehleGerade(int[] a) {
+    int count = 0;
+    for (int x : a) {
+        if (x % 2 == 0) count++;
+    }
+    return count;
+}
+```
+
+### Aufgabe 2 — Feld 1D (Existenz → boolean)
+```java
+public static boolean enthaelt(int[] a, int gesucht) {
+    for (int x : a) {
+        if (x == gesucht) return true;   // gefunden -> sofort raus
+    }
+    return false;                        // nie gefunden
+}
+```
+
+### Aufgabe 3 — Boolean (Vereinfachung)
+```java
+public static boolean istImBereich(int x) {
+    return x >= 1 && x <= 100;
+}
+```
+
+### Aufgabe 4 — Boolean (Verknüpfung &&)
+```java
+public static boolean gueltigeKoordinate(int z, int s, int n) {
+    return z >= 0 && z < n && s >= 0 && s < n;
+}
+```
+
+### Aufgabe 5 — Feld 2D (zaehlen)
+```java
+public static int zaehleWert(int[][] feld, int wert) {
+    int count = 0;
+    for (int z = 0; z < feld.length; z++) {
+        for (int s = 0; s < feld[z].length; s++) {
+            if (feld[z][s] == wert) count++;
+        }
+    }
+    return count;
+}
+```
+
+### Aufgabe 6 — Feld 2D + Boolean (Nachbarn)
+```java
+public static boolean hatNachbarTrue(boolean[][] karte, int z, int s) {
+    int n = karte.length;
+    boolean gefunden = false;
+    if (z > 0   && karte[z-1][s]) gefunden = true;   // oben
+    if (z < n-1 && karte[z+1][s]) gefunden = true;   // unten
+    if (s > 0   && karte[z][s-1]) gefunden = true;   // links
+    if (s < n-1 && karte[z][s+1]) gefunden = true;   // rechts
+    return gefunden;
+}
+```
+
+> Merke: „mindestens ein Nachbar true" = ODER-Logik (`||` bzw. `count >= 1`),
+> und die Grenzprüfung (`z > 0`, `z < n-1`, ...) steht VOR jedem Feldzugriff.
+
+### Aufgabe 7 — Synthese (nah an der Prüfung)
+```java
+public static boolean alleAufgedeckt(int[][] feld) {
+    for (int z = 0; z < feld.length; z++) {
+        for (int s = 0; s < feld[z].length; s++) {
+            if (feld[z][s] == 0) return false;  // eine Zelle noch nicht aufgedeckt -> nicht fertig
+        }
+    }
+    return true;
+}
+```
