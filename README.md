@@ -18,34 +18,9 @@ Tes 3 points faibles, et où ils tombent dans l'examen :
 
                    Etape 1: Révision Felder/Boolean
 fichier .md ci joint avec exercice 1 a 7, les faire et uploader les exercices sous le nom Felder_Boolean.pdf
-Exo 6 La clé à comprendre : le test de borne doit protéger chaque voisin séparément, pas bloquer toute la méthode. Et entre les voisins, c'est OU.
-
-
-ackage felderBoolean;
-
-public class aufgabe6 {
-	public static boolean hatNachbarTrue(boolean[][] karte, int z, int s) {
-	
-		int count = 0;
-		
-		 if (z > 0   && karte[z-1][s]) count++;
-		 if (z < karte.length-1 && karte[z+1][s]) count++;
-		 if (s > 0   && karte[z][s-1]) count++;
-		 if (s < karte.length-1 && karte[z][s+1]) count++;
-		 
-		 if(count != 4) {
-			 return false;
-		 }
-		
-		 return true;
-		
-	}
-}
 
                Etape 2: Apprendre à traduire un algo (humain → Java)
-
-
-
+le nouveau fichier .md ci joint avec le commentaire stufe 2 , lire et faire les exercices
 
 
              Etape 3: S'entraîner sur un examen complet
