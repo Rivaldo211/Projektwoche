@@ -55,6 +55,7 @@ public class aufgabe5 {
 }
 
 
+Aufgabe 6 false___muss noch gemacht werden
 public class aufgabe6 {
 	public static boolean hatNachbarTrue(boolean[][] karte, int z, int s) {
 		 if(z > 0 && z < karte.length-1 && s > 0 && s < karte.length-1) {
