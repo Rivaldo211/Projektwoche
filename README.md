@@ -82,6 +82,15 @@ public class aufgabe3 {
 
 package felderBoolean;
 
+public class aufgabe4 {
+	public static boolean gueltigeKoordinate(int z, int s, int n) {
+		return z >= 0 && z < n && s >= 0 && s < n;
+		
+	}
+}
+
+package felderBoolean;
+
 public class aufgabe5 {
 	public static int zaehleWert(int[][] feld, int wert){
 		int count = 0;
@@ -109,7 +118,17 @@ public class aufgabe6 {
 		return false;
 	}
 }
+nouveau:
+package felderBoolean;
 
+public class aufgabe6 {
+	public static boolean hatNachbarTrue(boolean[][] karte, int z, int s) {
+		
+		 return z > 0 && z < karte.length-1 && s > 0 && s < karte.length-1
+					 && karte[z-1][s] && karte[z+1][s] && karte[z][s-1] && karte[z][s+1] ;	
+		
+	}
+}
 
 
 package felderBoolean;
