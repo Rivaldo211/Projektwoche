@@ -24,42 +24,4 @@ le nouveau fichier .md ci joint avec le commentaire stufe 2 , lire et faire les 
 
 
              Etape 3: S'entraîner sur un examen complet
-
-[29.06.26, 02:34:01] Mon Spécimen rare❤️🖤: package algorithmen;
-
-public class aufgabe2 {
-	public boolean gueltigeEingabe(int zeile, int spalte) {
-		int[][] offenesSpielfeld ;
-		int n = offenesSpielfeld.length;
-		
-		if(zeile >= 0 && zeile < n && spalte >= 0 && spalte < n) {
-			if( offenesSpielfeld[zeile][spalte] == 0) {
-				return true;
-			}
-		}
-		return false;
-	  
-	}
-}
-
-package algorithmen;
-
-public class aufgabe6 {
-	static String s1;
-	static String s2;
-	static String unentschieden;
-	public static String auswertung() {
-	    if(spieler1.getPunkte() > spieler2.getPunkte()) {
-	    	return s1 ;
-	    }
-	    else if(spieler1.getPunkte() < spieler2.getPunkte()) {
-	    	return s2 ;
-	    }
-	    else if(spieler1.getPunkte() == spieler2.getPunkte()) {
-	    	return unentschieden;
-	    }
-	}
-}
-
-mich zu verbessern
-
+Mode examen active
