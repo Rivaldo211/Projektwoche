@@ -1,0 +1,102 @@
+# Memory Plus — Pruefungsaufgabe (erweiterte Fassung)
+
+Diese Aufgabe basiert auf der Pruefung **Memory (Januar 2024)** aus deiner Sammlung,
+ist aber **etwas anspruchsvoller** und auf rund **3 Stunden** ausgelegt.
+Das Grundgeruest ist vorgegeben — du fuellst die mit `TODO` markierten Stellen.
+
+> Erlaubt: nur `Scanner`, `Random`, `System.out.print/println`.
+> Kein `ä ö ü ß` im Code (auch nicht in String-Literalen).
+> Ein- und Ausgabe nur in der Klasse `Main`.
+
+---
+
+## Das Spiel
+
+Memory auf einem `char`-Feld mit **4 Zeilen x 6 Spalten** (12 Paare).
+Inhalt: A bis L, je als Gross- und Kleinbuchstabe, zufaellig gemischt.
+Zwei Spieler decken abwechselnd zwei Stellen auf. Passen sie zusammen
+(derselbe Buchstabe, einmal gross / einmal klein) → 1 Punkt und nochmal dran.
+Sonst → der andere Spieler ist dran. Sichtbar sind nur aufgedeckte Paare,
+verdeckte Stellen werden als `-` gezeigt. Spielende, wenn alles aufgedeckt ist.
+
+## Was ist NEU / schwerer gegenueber der Originalaufgabe?
+
+1. **Eingabevalidierung** (`gueltigeEingabe`): Koordinaten muessen existieren UND
+   noch verdeckt sein; es wird so lange nachgefragt, bis die Eingabe gueltig ist.
+2. **Keine doppelte Karte** (TODO 14): Die zweite Karte darf nicht dieselbe Stelle
+   wie die erste sein.
+3. **Statistik**: Pro Spieler wird die Anzahl der Versuche mitgezaehlt und am Ende ausgegeben.
+4. **`auswertung`** als eigene Methode mit drei Faellen (Sieg 1 / Sieg 2 / unentschieden).
+5. **Paar-Pruefung strikt per ASCII-Rechnung** (Abstand 32) — grosse if-Abfrage verboten.
+
+---
+
+## Projektstruktur
+
+```
+Examen_Memory_Plus/
+├── src/
+│   ├── Spieler.java     <- Name, Punkte, Versuche
+│   ├── Memory.java      <- Spielfeld + Spiellogik
+│   ├── Main.java        <- Menue + Spielablauf (Ein-/Ausgabe)
+│   └── UnitTests.java   <- 16 JUnit-5-Tests (NICHT veraendern)
+└── README_Memory_Plus.md
+```
+
+---
+
+## Empfohlene Bearbeitungsreihenfolge
+
+Arbeite die TODOs in dieser Reihenfolge ab und starte nach jedem Schritt die UnitTests.
+
+### Stufe 1 — Spieler (leicht)
+| TODO | Datei | Methode | Schwierigkeit |
+|------|-------|---------|---------------|
+| 1 | Spieler.java | Konstruktor | leicht |
+| 2 | Spieler.java | `getName()` | leicht |
+| 3 | Spieler.java | `getPunkte()` | leicht |
+| 4 | Spieler.java | `punktDazu()` | leicht |
+
+### Stufe 2 — Memory Grundlagen
+| TODO | Datei | Methode | Schwierigkeit |
+|------|-------|---------|---------------|
+| 5 | Memory.java | `getZeichen(z, s)` | leicht |
+| 6 | Memory.java | `aufdecken(z, s)` | leicht |
+| 7 | Memory.java | `allesAufgedeckt()` | mittel |
+| 8 | Memory.java | `gueltigeEingabe(z, s)` | mittel |
+
+### Stufe 3 — Memory Kern
+| TODO | Datei | Methode | Schwierigkeit |
+|------|-------|---------|---------------|
+| 9 | Memory.java | `initialisiereFeld()` | schwer |
+| 10 | Memory.java | `passenZusammen(c1, c2)` | mittel (WICHTIG: ASCII!) |
+| 11 | Memory.java | `toString()` | schwer |
+
+### Stufe 4 — Main (Menue & Ablauf)
+| TODO | Datei | Methode | Schwierigkeit |
+|------|-------|---------|---------------|
+| 12 | Main.java | `checkEingabeMenu(e)` | leicht |
+| 13 | Main.java | `menu()` | mittel |
+| 14 | Main.java | zweite Karte != erste (in `spielen()`) | mittel |
+| 15 | Main.java | Treffer-Logik (in `spielen()`) | mittel |
+| 16 | Main.java | `auswertung(s1, s2)` | mittel |
+
+---
+
+## Wichtigste Hinweise
+
+- **passenZusammen (TODO 10)**: 'A' = 65, 'a' = 97, Abstand immer 32.
+  Pruefe den Betrag der Differenz von `c1` und `c2`. KEINE grosse if-Aufzaehlung.
+- **initialisiereFeld (TODO 9)**: erst die 12 Grossbuchstaben (ab 65),
+  dann die 12 Kleinbuchstaben (ab 97), per Schleifen und ASCII-Zahlen.
+- **gueltigeEingabe (TODO 8)**: Grenzen ZUERST pruefen, dann auf `aufgedeckt[z][s]` zugreifen.
+- **toString (TODO 11)**: aufgedeckt → Buchstabe, sonst `-`; 6 Zeichen pro Zeile mit
+  Leerzeichen, Zeilen mit `\n`.
+
+## Tests ausfuehren
+
+In Eclipse: Rechtsklick auf `UnitTests.java` → `Run As` → `JUnit Test`.
+Es gibt 16 Tests. Ziel: moeglichst viele gruen. (Bestehen der Tests ist nicht
+automatisch Bestehen der Pruefung — halte dich auch an die Ein-/Ausgabe-Vorgaben.)
+
+Viel Erfolg!
